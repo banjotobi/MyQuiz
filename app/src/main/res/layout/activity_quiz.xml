@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".QuizActivity">
+    android:background="#b3e5fc"
+    android:layout_height="wrap_content"
+    tools:context=".QuizActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_msg"
+        android:textAllCaps="true"
+        android:textAlignment="center"
+        android:textSize="16sp"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textStyle="bold" />
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_msg"
-            android:textAllCaps="true"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -224,6 +234,8 @@
         </LinearLayout>
 
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -233,46 +245,65 @@
             android:background="@drawable/roundedlayout"
             android:layout_marginBottom="8dp">
             <TextView
-                android:id="@+id/q5"
+                android:id="@+id/q6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Q5"
+                android:text="@string/q6"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="#212121"/>
-            <RadioGroup
-                android:id="@+id/an5"
+                android:textColor="#212121"
+                android:tag="a.c"/>
+            <CheckBox
+                android:id="@+id/an6a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tag="D"
-                android:layout_marginBottom="8dp">
-                <RadioButton
-                    android:id="@+id/A5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:tag="A"
-                    android:text="@string/A5"/>
-                <RadioButton
-                    android:id="@+id/B5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:tag="B"
-                    android:text="@string/B5"/>
-                <RadioButton
-                    android:id="@+id/C5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:tag="C"
-                    android:text="@string/C5"/>
-                <RadioButton
-                    android:id="@+id/D5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:tag="D"
-                    android:text="@string/D5"/>
-            </RadioGroup>
-
+                android:tag="Y"
+                android:text="@string/an6a"/>
+            <CheckBox
+                android:id="@+id/an6b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="N"
+                android:text="@string/an6b"/>
+            <CheckBox
+                android:id="@+id/an6c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="Y"
+                android:text="@string/an6c"/>
+            <CheckBox
+                android:id="@+id/an6d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="Y"
+                android:text="@string/an6d"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:background="@drawable/roundedlayout"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:id="@+id/q7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/q7"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#212121"
+                android:tag="JAVA"/>
+            <EditText
+                android:id="@+id/a7"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:hint="@string/a7_hint"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
 
 
 
@@ -280,7 +311,9 @@
         <Button
             android:id="@+id/submit_ans"
             android:layout_width="match_parent"
-            android:paddingTop="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="#9e9e9e"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/submit_ans"
@@ -292,3 +325,4 @@
 
     </LinearLayout>
 </ScrollView>
+</LinearLayout>

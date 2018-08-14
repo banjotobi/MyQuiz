@@ -31,4 +31,16 @@
     <string name="D5">All of above</string>
     <string name="submit_ans">SUBMIT QUIZ</string>
     <string name="mail">MAIL REPORT</string>
+    <string name="report_status">REPORT OF QUIZ 1.0</string>
+    <string name="q7">6. The default language initially supported for Android development is?</string>
+    <string name="an6d">PHP</string>
+    <string name="an6c">Kotlin</string>
+    <string name="an6b">HTML</string>
+    <string name="an6a">Java</string>
+    <string name="q6">5. Which of the following languages is supported by Android for application development?</string>
+    <string name="img1_desc">Welcome Image</string>
+    <string name="a7_hint">Provide Answer</string>
+    <string name="salute">Dear</string>
+    <string name="salute2">Dear</string>
+    <string name="salute3">, your score is</string>
 </resources>

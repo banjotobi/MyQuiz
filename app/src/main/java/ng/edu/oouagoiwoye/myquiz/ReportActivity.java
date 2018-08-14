@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class ReportActivity extends AppCompatActivity {
     String uname;
     String report;
-    String score;
+    int score;
     RatingBar ratings;
     TextView statusTextView;
     TextView scoreTextView;
@@ -25,19 +25,16 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         uname = getIntent().getStringExtra("uname");
-        score = getIntent().getStringExtra("score");
+        score = getIntent().getIntExtra("score", 0);
         report = getIntent().getStringExtra("report");
         statusTextView = findViewById(R.id.uname);
-        statusTextView.setText("Dear "+uname+" your score is");
+        statusTextView.setText(getString(R.string.salute)+uname+",");
         scoreTextView = findViewById(R.id.score);
-        scoreTextView.setText(score);
+        scoreTextView.setText("your score is "+score);
         ratings = findViewById(R.id.ratings);
-        ratings.setRating(Integer.parseInt(score));
+        ratings.setRating(score);
         reportTextView = findViewById(R.id.report);
         reportTextView.setText(report);
-
-
-
     }
 
     public void toastMaker(CharSequence text)
@@ -56,7 +53,7 @@ public class ReportActivity extends AppCompatActivity {
         body += "Thank you for partipating in our Quiz.\n Below is the report of your quiz";
         body += "REPORT\n";
         body += report;
-        body += "\n Tnak you for participating in our Quiz.\n We hope to see you soon\n\n SIGNED\n MANAGEMENT";
+        body += "\n Thank you for participating in our Quiz.\n We hope to see you soon\n\n SIGNED\n MANAGEMENT";
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         //intent.putExtra(Intent.EXTRA_EMAIL, addresses);

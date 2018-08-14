@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +22,8 @@ public class QuizActivity extends AppCompatActivity {
     private RadioGroup ansRadioGroup;
     private RadioButton radioButtonCA;
     private RadioButton radioButton;
+    private CheckBox optiona, optionb, optionc, optiond;
+    private EditText resp;
     String report = "";
     int score = 0;
 
@@ -29,7 +33,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         uname = getIntent().getStringExtra("uname");
-        status = (TextView) findViewById(R.id.status);
+        status =  findViewById(R.id.status);
         status.setText(String.format(getString(R.string.status), uname));
         toastMaker("Dear "+uname+" you can now start your quiz");
     }
@@ -48,30 +52,63 @@ public class QuizActivity extends AppCompatActivity {
 
     public void submitAnswer(View view)
     {
+        score = 0;
 
-        questionTextView = (TextView) findViewById(R.id.q1);
-        ansRadioGroup = (RadioGroup) findViewById(R.id.an1);
+        questionTextView = findViewById(R.id.q1);
+        ansRadioGroup = findViewById(R.id.an1);
         checkAnswer(questionTextView, ansRadioGroup);
-        questionTextView = (TextView) findViewById(R.id.q2);
-        ansRadioGroup = (RadioGroup) findViewById(R.id.an2);
+        questionTextView =  findViewById(R.id.q2);
+        ansRadioGroup = findViewById(R.id.an2);
         checkAnswer(questionTextView, ansRadioGroup);
-        questionTextView = (TextView) findViewById(R.id.q3);
-        ansRadioGroup = (RadioGroup) findViewById(R.id.an3);
+        questionTextView =  findViewById(R.id.q3);
+        ansRadioGroup =  findViewById(R.id.an3);
         checkAnswer(questionTextView, ansRadioGroup);
-        questionTextView = (TextView) findViewById(R.id.q4);
-        ansRadioGroup = (RadioGroup) findViewById(R.id.an4);
-        checkAnswer(questionTextView, ansRadioGroup);
-        questionTextView = (TextView) findViewById(R.id.q5);
-        ansRadioGroup = (RadioGroup) findViewById(R.id.an5);
+        questionTextView =  findViewById(R.id.q4);
+        ansRadioGroup =  findViewById(R.id.an4);
         checkAnswer(questionTextView, ansRadioGroup);
 
+       //work on question 5
+        int cor = 0;
+        questionTextView = findViewById(R.id.q6);
+        optiona = findViewById(R.id.an6a);
+        optionb =  findViewById(R.id.an6b);
+        optionc = findViewById(R.id.an6c);
+        optiond =  findViewById(R.id.an6d);
+
+
+       if(optiona.isChecked() && !optionb.isChecked() && optionc.isChecked() && !optiond.isChecked())
+       {
+           ++score;
+           report += questionTextView.getText().toString() + " CORRECT: Java & Kotlin \n";
+
+       } else
+       {
+           report += questionTextView.getText().toString() + " ANS: Java & Kotlin \n";
+       }
+        report += "\n";
+       //work on question 6
+        questionTextView = findViewById(R.id.q7);
+        resp = findViewById(R.id.a7);
+        String ans6 = resp.getText().toString().toUpperCase();
+
+       if (questionTextView.getTag().toString().equals(ans6))
+       {
+           ++score;
+           report += questionTextView.getText().toString() + " CORRECT: "+questionTextView.getTag().toString()+"\n";
+       } else {
+           report += questionTextView.getText().toString() + " WRONG "+ans6+". ANS("+questionTextView.getTag().toString()+")\n";
+       }
 
 
 
 
-        //toastMaker("Dear "+uname+" your score is "+score+"\n REPORT\n"+report);
 
-        Intent reportPage = new Intent(this, ReportActivity.class);
+
+
+        toastMaker(getString(R.string.salute2)+uname+getString(R.string.salute3)+score+"\n REPORT\n"+report);
+
+        Intent reportPage = new Intent(
+                this, ReportActivity.class);
         reportPage.putExtra("uname", uname);
         reportPage.putExtra("score", score);
         reportPage.putExtra("report", report);
@@ -86,7 +123,7 @@ public class QuizActivity extends AppCompatActivity {
             report += quest.getText().toString() + " NOT ATTEMPTED. ANS("+ans+")\n";
         } else {
             int selectedId = options.getCheckedRadioButtonId();
-            radioButton = (RadioButton) findViewById(selectedId);
+            radioButton = findViewById(selectedId);
             String qResp = radioButton.getTag().toString();
             if (ans.equals(qResp)) {
                 ++score;
@@ -95,5 +132,6 @@ public class QuizActivity extends AppCompatActivity {
                 report += quest.getText().toString() + " WRONG "+qResp+". ANS("+ans+")\n";
             }
         }
+        report += "\n";
     }
 }
